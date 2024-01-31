@@ -22,7 +22,7 @@ async def transfer_members(limit=None):
     async for participant in client.iter_participants(source_group_id):
         # Add each participant to the destination group
         try:
-            await client.add_chat_user(destination_group_id, participant.id)
+            client.get_entity(destination_group_id).add_user(participant.id)
             print(f"Transferred user {participant.id} to the destination group.")
             count += 1
 
